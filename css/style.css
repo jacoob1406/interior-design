@@ -1,0 +1,421 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 2, 2018, 6:40:02 PM
+    Author     : Kuba
+*/
+* {
+  padding: 0;
+  margin: 0;
+  border-box: box-sizing; }
+
+body {
+  font-family: 'Playfair Display', serif;
+  color: #fff;
+  background: url("../media/bgbw.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
+nav {
+  width: 100%;
+  position: fixed;
+  height: 60px;
+  letter-spacing: 2px;
+  background: black;
+  text-align: right;
+  z-index: 10; }
+  nav .toggle {
+    display: none;
+    font-size: 40px;
+    padding: 5px 5px 0 0; }
+    nav .toggle .menu {
+      cursor: pointer; }
+  nav ul {
+    padding-right: 20px;
+    font-size: 20px; }
+    nav ul li {
+      list-style: none;
+      display: inline-block;
+      padding: 30px 10px 0; }
+      nav ul li span {
+        color: #fca599; }
+      nav ul li a {
+        text-decoration: none;
+        color: white;
+        padding-left: 2px; }
+        nav ul li a:hover {
+          margin-left: -3px;
+          border-left: 3px solid white; }
+        nav ul li a:active {
+          color: white; }
+
+@media (max-width: 768px) {
+  nav .toggle {
+    display: block; }
+    nav .toggle #nomenuicon {
+      display: none; }
+  nav ul {
+    background: #232323;
+    opacity: 0.9;
+    display: none;
+    width: 40%;
+    background: black;
+    margin-left: auto;
+    margin-right: 0;
+    transition: 2s;
+    border-radius: 0 0 0 50px; }
+    nav ul li {
+      display: block;
+      padding: 5px 0; }
+
+  .active {
+    display: block; }
+
+  .noactive {
+    display: none; } }
+.container {
+  padding: 70px 50px 0 50px;
+  background: rgba(0, 0, 0, 0.7);
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 450px; }
+  .container .heading {
+    width: 100%; }
+    .container .heading h1 {
+      padding-top: 20px;
+      text-align: center;
+      letter-spacing: 3px;
+      padding-bottom: 10px; }
+      .container .heading h1 span {
+        color: #fca599;
+        text-decoration: line-through; }
+  .container .intro1 {
+    width: 100%;
+    padding-top: 40px;
+    text-align: justify; }
+  .container .intro2 {
+    width: 100%;
+    text-align: center; }
+    .container .intro2 ul {
+      list-style: none;
+      text-align: center;
+      padding-top: 100px;
+      padding-bottom: 50px; }
+      .container .intro2 ul li:nth-child(odd) {
+        color: #fca599; }
+      .container .intro2 ul li a {
+        text-decoration: none;
+        color: white; }
+        .container .intro2 ul li a:hover {
+          opacity: 0.8; }
+  .container .intro3 {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 40px;
+    padding-bottom: 40px; }
+    .container .intro3 .wedo {
+      flex: 1;
+      text-align: center; }
+      .container .intro3 .wedo ul {
+        list-style: none; }
+        .container .intro3 .wedo ul li span {
+          color: #fca599;
+          font-size: 1.2em; }
+    .container .intro3 .quotes {
+      flex: 1; }
+      .container .intro3 .quotes h2 {
+        text-align: center;
+        color: #fca599; }
+      .container .intro3 .quotes h4 {
+        text-align: right;
+        padding-right: 3%;
+        padding-top: 5px;
+        color: white; }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 70px 0 0 0;
+    margin: 0 auto;
+    width: 95%;
+    padding-bottom: 20px; }
+    .container .intro1 {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto; }
+    .container .intro2 {
+      width: 100%; }
+      .container .intro2 ul {
+        padding-top: 40px; }
+    .container .intro3 {
+      display: block;
+      padding-top: 0; }
+      .container .intro3 .wedo {
+        padding-bottom: 30px; }
+      .container .intro3 .quotes {
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto; } }
+.slider {
+  background: url("https://www.nysid.edu/image/home-slideshow/BFA15_Thomas.jpg") center;
+  width: 100%;
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 70px 0;
+  position: relative;
+  border-top: 25px solid rgba(0, 0, 0, 0.7);
+  border-bottom: 25px solid rgba(0, 0, 0, 0.7);
+  z-index: 2; }
+  .slider .next {
+    height: 70px;
+    position: absolute;
+    font-size: 3em;
+    font-weight: bold;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    border-radius: 15px;
+    background: black;
+    padding: 3px 5px 0 5px;
+    color: #fca599;
+    right: 5px;
+    top: 215px;
+    cursor: pointer;
+    opacity: 0; }
+    .slider .next:hover {
+      border: 1px solid #fca599; }
+  .slider .previous {
+    height: 70px;
+    position: absolute;
+    font-size: 3em;
+    font-weight: bold;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    border-radius: 15px;
+    background: black;
+    padding: 3px 5px 0 5px;
+    color: #fca599;
+    left: 5px;
+    top: 215px;
+    cursor: pointer;
+    opacity: 0; }
+    .slider .previous:hover {
+      border: 1px solid #fca599; }
+  .slider:hover .next {
+    opacity: 1; }
+  .slider:hover .previous {
+    opacity: 1; }
+
+.hide {
+  display: none; }
+
+.heading {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #fca599; }
+  .heading h1 {
+    background: rgba(0, 0, 0, 0.7);
+    margin-left: 30%;
+    margin-right: 30%; }
+
+.container-projects {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 70px;
+  background: rgba(0, 0, 0, 0.7);
+  padding-bottom: 20px; }
+  .container-projects .heading {
+    width: 100%;
+    text-align: center;
+    margin: 2% 0;
+    color: #fca599; }
+    .container-projects .heading button {
+      border: 3px solid #fca599;
+      background: black;
+      color: white;
+      -webkit-border-radius: 15%;
+      -moz-border-radius: 15%;
+      -ms-border-radius: 15%;
+      border-radius: 15%;
+      padding: 5px 15px;
+      cursor: pointer; }
+      .container-projects .heading button:hover {
+        text-decoration: underline;
+        opacity: 0.8; }
+  .container-projects .project {
+    width: 25%;
+    text-align: center;
+    margin-bottom: 1%;
+    position: relative; }
+    .container-projects .project .overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: auto;
+      width: 70%;
+      opacity: 0;
+      transition: .5s ease;
+      background: rgba(0, 0, 0, 0.5);
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      border-radius: 50%;
+      margin-right: auto;
+      margin-left: auto; }
+      .container-projects .project .overlay:hover {
+        opacity: 1;
+        cursor: pointer; }
+    .container-projects .project .text {
+      color: red;
+      font-size: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%); }
+    .container-projects .project img {
+      display: block;
+      width: 70%;
+      height: auto;
+      margin-right: auto;
+      margin-left: auto;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      border-radius: 50%;
+      cursor: pointer; }
+      .container-projects .project img:hover .overlay {
+        z-index: 5;
+        opacity: 0.6; }
+
+@media (max-width: 768px) {
+  .heading h1 {
+    margin: 0 10%; }
+
+  .container-projects .project {
+    width: 50%; } }
+.outro {
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  background: rgba(0, 0, 0, 0.7);
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-bottom: 70px;
+  padding-top: 20px; }
+  .outro .contact {
+    width: 65%; }
+    .outro .contact h1 {
+      padding-bottom: 15px;
+      font-size: 1.2em; }
+      .outro .contact h1 .us {
+        color: #fca599; }
+    .outro .contact form input, .outro .contact form textarea {
+      display: block;
+      width: 60%;
+      margin: 10px auto;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      border-radius: 10px;
+      border: 0;
+      font-family: 'Alegreya', serif;
+      text-align: center;
+      height: 30px; }
+      .outro .contact form input:focus, .outro .contact form textarea:focus {
+        border: 2px solid #fca599;
+        outline-width: 0; }
+    .outro .contact form textarea {
+      height: auto !important; }
+    .outro .contact form #submit {
+      width: 30%;
+      cursor: pointer;
+      background: #fca599;
+      height: 35px;
+      margin-top: 20px;
+      font-size: 1.2em; }
+  .outro .top-interior {
+    width: 23%;
+    padding-left: 10px; }
+    .outro .top-interior .us {
+      color: #fca599; }
+    .outro .top-interior img {
+      width: 80%;
+      padding: 10px 0; }
+  .outro .social {
+    width: 12%;
+    padding-right: 10px; }
+    .outro .social h1 {
+      padding-bottom: 10px;
+      font-size: 1.2em; }
+      .outro .social h1 .us {
+        color: #fca599; }
+    .outro .social a {
+      text-decoration: none;
+      color: #fca599;
+      width: 50%; }
+      .outro .social a:hover {
+        opacity: 0.7; }
+
+@media (max-width: 768px) {
+  .outro {
+    flex-flow: row wrap;
+    justify-content: space-around; }
+    .outro .contact {
+      width: 100%;
+      order: 3;
+      margin-top: 30px; }
+    .outro .social {
+      width: 20%;
+      order: 2; }
+    .outro .top-interior {
+      width: 40%;
+      order: 1; } }
+@media (max-width: 400px) {
+  .outro {
+    flex-direction: column; }
+    .outro .contact {
+      width: auto;
+      flex: 2;
+      order: 3; }
+      .outro .contact form input, .outro .contact form textarea {
+        width: 90%; }
+      .outro .contact form #submit {
+        width: 60%; }
+    .outro .social {
+      width: auto;
+      flex: 1 auto;
+      order: 2;
+      margin-bottom: 30px; }
+    .outro .top-interior {
+      width: auto;
+      flex: 1 auto;
+      order: 1;
+      margin-bottom: 30px; } }
+footer {
+  width: 100%;
+  background: black;
+  text-align: center;
+  font-size: 0.6em; }
+  footer a {
+    text-decoration: none;
+    color: #fca599; }
+    footer a:hover {
+      opacity: 0.7; }
+
+/*# sourceMappingURL=style.css.map */

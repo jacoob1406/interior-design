@@ -7,7 +7,7 @@ and open the template in the editor.
     Created on : Jan 2, 2018, 6:40:02 PM
     Author     : Kuba
 */
-.slider .next, .slider .previous {
+.slider-container .slider .next, .slider-container .slider .previous {
   height: 70px;
   position: absolute;
   font-size: 3em;
@@ -22,7 +22,7 @@ and open the template in the editor.
   top: 215px;
   cursor: pointer;
   opacity: 0; }
-  .slider .next:hover, .slider .previous:hover {
+  .slider-container .slider .next:hover, .slider-container .slider .previous:hover {
     border: 1px solid #fca599; }
 
 .container, .container-projects, .container-projects .project .overlay, .container-projects .project img, .outro {
@@ -84,15 +84,24 @@ nav {
         nav ul li a:active {
           color: white; }
 
+@keyframes slide {
+  0% {
+    height: 0; }
+  50% {
+    height: 125%; }
+  100% {
+    height: 250%; } }
 @media (max-width: 768px) {
   nav .toggle {
     display: block; }
     nav .toggle #nomenuicon {
       display: none; }
   nav ul {
+    animation: slide 0.05s linear;
+    height: 0;
     background: #232323;
-    opacity: 0.9;
     display: none;
+    opacity: 0;
     width: 40%;
     background: black;
     margin-left: auto;
@@ -106,7 +115,9 @@ nav {
       padding: 5px 0; }
 
   .active {
-    display: block; }
+    display: block;
+    height: 250%;
+    opacity: 0.9; }
 
   .noactive {
     display: none; } }
@@ -202,44 +213,47 @@ nav {
         width: 70%;
         margin-left: auto;
         margin-right: auto; } }
-.slider {
-  background: url("https://www.nysid.edu/image/home-slideshow/BFA15_Thomas.jpg") center;
-  width: 100%;
-  height: 500px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin: 70px 0;
-  position: relative;
-  border-top: 25px solid rgba(0, 0, 0, 0.7);
-  border-bottom: 25px solid rgba(0, 0, 0, 0.7);
-  z-index: 2;
-  -moz-transition: background 0.5s;
-  -o-transition: background 0.5s;
-  -webkit-transition: background 0.5s;
-  transition: background 0.5s; }
-  .slider .next {
-    right: 5px; }
-  .slider .previous {
-    left: 5px; }
-  .slider .pause {
-    position: absolute;
-    bottom: 5px;
-    left: 50%;
-    opacity: 0; }
-    .slider .pause img {
-      width: 60px;
-      height: auto;
-      margin-left: -30px;
-      background: black;
-      -webkit-border-radius: 15%;
-      -moz-border-radius: 15%;
-      -ms-border-radius: 15%;
-      border-radius: 15%;
-      cursor: pointer; }
-      .slider .pause img:hover {
-        border: 1px solid #fca599; }
-  .slider:hover .next, .slider:hover .previous, .slider:hover .pause {
-    opacity: 1; }
+.slider-container {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0 5%;
+  margin: 50px 0;
+  padding-top: 20px;
+  padding-bottom: 20px; }
+  .slider-container .slider {
+    background: url("https://www.nysid.edu/image/home-slideshow/BFA15_Thomas.jpg") center;
+    width: 100%;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 2;
+    -moz-transition: background 0.5s;
+    -o-transition: background 0.5s;
+    -webkit-transition: background 0.5s;
+    transition: background 0.5s; }
+    .slider-container .slider .next {
+      right: 5px; }
+    .slider-container .slider .previous {
+      left: 5px; }
+    .slider-container .slider .pause {
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      opacity: 0; }
+      .slider-container .slider .pause img {
+        width: 60px;
+        height: auto;
+        margin-left: -30px;
+        background: black;
+        -webkit-border-radius: 15%;
+        -moz-border-radius: 15%;
+        -ms-border-radius: 15%;
+        border-radius: 15%;
+        cursor: pointer; }
+        .slider-container .slider .pause img:hover {
+          border: 1px solid #fca599; }
+    .slider-container .slider:hover .next, .slider-container .slider:hover .previous, .slider-container .slider:hover .pause {
+      opacity: 1; }
 
 .hide {
   opacity: 0;

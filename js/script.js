@@ -77,7 +77,7 @@ window.onload = function () {
     }
     ;
 
-    var slideInterval = setInterval(nextPic, 3000);
+    var slideInterval = setInterval(nextPic, 4000);
 
     var go = true;
 
@@ -89,7 +89,7 @@ window.onload = function () {
         } else {
             document.getElementById('pauseplay').src = 'media/pause.png';
             go = true;
-            slideInterval = setInterval(nextPic, 3000);
+            slideInterval = setInterval(nextPic, 4000);
         }
     };
 

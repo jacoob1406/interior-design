@@ -163,6 +163,14 @@ nav{
     }
 }
 
+
+@keyframes slide{
+    0% {height: 0}
+    50% {height: 125%}
+    100% {height: 250%}
+}
+
+
 @media (max-width: 768px){
     nav{
         .toggle{
@@ -174,9 +182,11 @@ nav{
         }
 
         ul{
+            animation: slide 0.05s linear;
+            height: 0;
             background: #232323;
-            opacity: 0.9;
             display: none;
+            opacity: 0;
             width: 40%;
             background: black;
             margin-left:auto; 
@@ -194,6 +204,8 @@ nav{
 
     .active {
         display: block;
+        height: 250%;
+        opacity: 0.9;
     }
 
     .noactive{
@@ -336,53 +348,59 @@ nav{
 }
 
 //SLIDER
+.slider-container{
+    background: rgba(0,0,0,0.7);
+    padding: 0 5%;
+    margin: 50px 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
 
-.slider{
-    background: url('https://www.nysid.edu/image/home-slideshow/BFA15_Thomas.jpg') center;
-    width:100%;
-    height:500px;
-    background-repeat:no-repeat;
-    background-size:cover;
-    margin: 70px 0;
-    position: relative;
-    border-top: 25px solid rgba(0, 0 ,0, 0.7);
-    border-bottom: 25px solid rgba(0, 0 ,0, 0.7);
-    z-index: 2;
-    @include transition(background 0.5s);//czy nie zmienić na coś innego?
+    .slider{
+        background: url('https://www.nysid.edu/image/home-slideshow/BFA15_Thomas.jpg') center;
+        width:100%;
+        height:500px;
+        background-repeat:no-repeat;
+        background-size:cover;
+        position: relative;
+        //border-top: 25px solid rgba(0, 0 ,0, 0.7);
+        // border-bottom: 25px solid rgba(0, 0 ,0, 0.7);
+        z-index: 2;
+        @include transition(background 0.5s);//czy nie zmienić na coś innego?
 
-    .next{
-        @extend %sliderChanger;
-        right: 5px;
-    }
+        .next{
+            @extend %sliderChanger;
+            right: 5px;
+        }
 
-    .previous{
-        @extend %sliderChanger;
-        left: 5px;
-    }
+        .previous{
+            @extend %sliderChanger;
+            left: 5px;
+        }
 
-    .pause{
-        position: absolute;
-        bottom: 5px;
-        left: 50%;
-        opacity: 0;
+        .pause{
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            opacity: 0;
 
-        img{
-            width: 60px;
-            height: auto;
-            margin-left: -30px;
-            background: black;
-            @include border-radius(15%);
-            cursor: pointer;
+            img{
+                width: 60px;
+                height: auto;
+                margin-left: -30px;
+                background: black;
+                @include border-radius(15%);
+                cursor: pointer;
 
-            &:hover{
-                border: 1px solid $col3;
+                &:hover{
+                    border: 1px solid $col3;
+                }
             }
         }
-    }
 
-    &:hover{
-        .next, .previous, .pause{
-            opacity: 1;
+        &:hover{
+            .next, .previous, .pause{
+                opacity: 1;
+            }
         }
     }
 }

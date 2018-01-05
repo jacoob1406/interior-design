@@ -17,6 +17,82 @@ $col3: #fca599;
     border-radius: $radius;
 }
 
+@mixin transition-delay($delay...) {
+    -moz-transition-delay:    $delay;
+    -o-transition-delay:      $delay;
+    -webkit-transition-delay: $delay;
+    transition-delay:         $delay;
+}
+
+@mixin transition($transition...) {
+    -moz-transition:    $transition;
+    -o-transition:      $transition;
+    -webkit-transition: $transition;
+    transition:         $transition;
+}
+
+%sliderChanger{
+    height: 70px;
+    position: absolute;
+    font-size: 3em;
+    font-weight: bold;
+    @include border-radius(15px);
+    background: black;
+    padding: 3px 5px 0 5px;
+    color: $col3;
+    top: 215px;
+    cursor: pointer;
+    opacity: 0;
+
+    &:hover{
+        border: 1px solid $col3;
+    }
+}
+
+%center{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+%flexbox {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin flex($values) {
+    -webkit-box-flex: $values;
+    -moz-box-flex: $values;
+    -webkit-flex: $values;
+    -ms-flex: $values;
+    flex: $values;
+}
+
+@mixin flex-flow($flow) {
+    -webkit-flex-flow: $flow;
+    -moz-flex-flow: $flow;
+    -ms-flex-flow: $flow;
+    flex-flow: $flow;
+}
+
+@mixin order($val) {
+    -webkit-box-ordinal-group: $val;  
+    -moz-box-ordinal-group: $val;     
+    -ms-flex-order: $val;     
+    -webkit-order: $val;  
+    order: $val;
+}
+
+@mixin justify($justify) {
+    -webkit-justify-content: $justify;
+    -moz-justify-content: $justify;
+    -ms-justify-content: $justify;
+    justify-content: $justify;
+    -ms-flex-pack: $justify;
+}
+
 *{
     padding: 0;
     margin: 0;
@@ -49,6 +125,7 @@ nav{
         display: none;
         font-size: 40px;
         padding: 5px 5px 0 0;
+
         .menu{
             cursor: pointer;
         }
@@ -57,6 +134,8 @@ nav{
     ul{
         padding-right: 20px;
         font-size: 20px;
+        transition: display .3s linear;
+
         li{
             list-style: none;
             display: inline-block;
@@ -74,7 +153,6 @@ nav{
                 &:hover{
                     margin-left: -3px;
                     border-left: 3px solid white;
-                    // text-decoration: underline;
                 }
 
                 &:active{
@@ -103,8 +181,7 @@ nav{
             background: black;
             margin-left:auto; 
             margin-right:0;
-            transition: 2s;
-            border-radius: 0 0 0 50px;
+            @include border-radius(0 0 0 50px);
 
             li{
                 display: block;
@@ -130,8 +207,7 @@ nav{
     padding: 70px 50px 0 50px;
     background: rgba(0, 0, 0, 0.7);
     width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    @extend %center;
     min-height: 450px;
 
     .heading{
@@ -159,13 +235,12 @@ nav{
     .intro2{
         width: 100%; 
         text-align: center;
+
         ul{
             list-style: none;
             text-align: center;
             padding-top: 100px;
             padding-bottom: 50px;
-
-
 
             li{
                 &:nth-child(odd){
@@ -180,23 +255,21 @@ nav{
                         opacity: 0.8;
                     }
                 }
-
             }
         }  
     }
     .intro3{
-        display: flex;
-        justify-content: space-around;
+        @extend %flexbox;
+        @include justify(space-around);
         padding-top: 40px;
         padding-bottom: 40px;;
 
         .wedo{
-            flex:1;
+            @include flex(1);
             text-align: center;
 
             ul{
                 list-style: none;
-
                 li{
                     span{
                         color: $col3;
@@ -208,7 +281,7 @@ nav{
         }
 
         .quotes{
-            flex: 1;
+            @include flex(1);
 
             h2{
                 text-align: center;
@@ -231,7 +304,6 @@ nav{
         margin: 0 auto;
         width: 95%;
         padding-bottom: 20px;
-
 
         .intro1{
             width: 90%;
@@ -275,54 +347,41 @@ nav{
     position: relative;
     border-top: 25px solid rgba(0, 0 ,0, 0.7);
     border-bottom: 25px solid rgba(0, 0 ,0, 0.7);
-    //border-top: 5px solid $col3;
-    // border-bottom: 5px solid $col3;
     z-index: 2;
+    @include transition(background 0.5s);//czy nie zmienić na coś innego?
 
     .next{
-        height: 70px;
-        position: absolute;
-        font-size: 3em;
-        font-weight: bold;
-        @include border-radius(15px);
-        background: black;
-        padding: 3px 5px 0 5px;
-        color: $col3;
+        @extend %sliderChanger;
         right: 5px;
-        top: 215px;
-        cursor: pointer;
-        opacity: 0;
-
-        &:hover{
-            border: 1px solid $col3;
-        }
     }
 
     .previous{
-        height: 70px;
-        position: absolute;
-        font-size: 3em;
-        font-weight: bold;
-        @include border-radius(15px);
-        background: black;
-        padding: 3px 5px 0 5px;
-        color: $col3;
+        @extend %sliderChanger;
         left: 5px;
-        top: 215px;
-        cursor: pointer;
+    }
+
+    .pause{
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
         opacity: 0;
 
-        &:hover{
-            border: 1px solid $col3;
+        img{
+            width: 60px;
+            height: auto;
+            margin-left: -30px;
+            background: black;
+            @include border-radius(15%);
+            cursor: pointer;
+
+            &:hover{
+                border: 1px solid $col3;
+            }
         }
     }
 
     &:hover{
-        .next{
-            opacity: 1;
-        }
-
-        .previous{
+        .next, .previous, .pause{
             opacity: 1;
         }
     }
@@ -331,7 +390,9 @@ nav{
 //projects-container
 
 .hide{
-    display: none;
+    //display: none;
+    opacity: 0;
+    height: 0;
 }
 .heading-projects{
     width: 100%;
@@ -347,12 +408,11 @@ nav{
 }
 
 .container-projects{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
+    @extend %flexbox;
+    @include flex-flow(row wrap);
+    @include justify(space-around);
     width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+    @extend %center;
     margin-bottom: 70px;
     background: rgba(0, 0, 0, 0.7);
     padding-bottom: 20px;
@@ -382,6 +442,14 @@ nav{
         text-align: center;
         margin-bottom: 1%;
         position: relative;
+        @include transition(opacity 1s 0.1s);
+
+        &:nth-child(8) {@include transition-delay(0.1s); }
+        &:nth-child(9) { @include transition-delay(0.2s); }
+        &:nth-child(10) { @include transition-delay(0.3s); }
+        &:nth-child(11) { @include transition-delay(0.4s); }
+        &:nth-child(12) { @include transition-delay(0.5s); }
+        &:nth-child(13) { @include transition-delay(0.6s); }
 
         .overlay{
             position: absolute;
@@ -392,11 +460,10 @@ nav{
             height: auto;
             width: 70%;
             opacity: 0;
-            transition: .5s ease;
+            @include transition(.5s ease);
             background: rgba(0, 0, 0, 0.5);
             @include border-radius(50%);
-            margin-right: auto;
-            margin-left: auto;
+            @extend %center;
 
             &:hover{
                 opacity: 1;
@@ -417,8 +484,7 @@ nav{
             display: block;
             width: 70%;
             height: auto;
-            margin-right: auto;
-            margin-left: auto;
+            @extend %center;
             @include border-radius(50%);
             cursor: pointer;
 
@@ -449,11 +515,10 @@ nav{
 
 .outro{
     width: 90%;
-    display: flex;
-    justify-content: space-around;
+    @extend %flexbox;
+    @include justify(space-around);
     background: rgba(0,0,0,0.7);
-    margin-left: auto;
-    margin-right: auto;
+    @extend %center;
     text-align: center;
     margin-bottom: 70px;
     padding-top: 20px;
@@ -547,8 +612,8 @@ nav{
 @media (max-width: 768px){
 
     .outro{
-        flex-flow: row wrap;
-        justify-content: space-around;
+        @include flex-flow(row wrap);
+        @include justify(space-around);
 
         .contact{
             width: 100%;
@@ -571,12 +636,15 @@ nav{
 @media (max-width: 400px){
 
     .outro{
+        -webkit-flex-direction: column;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
         flex-direction: column;
 
         .contact{
             width: auto;
-            flex: 2;
-            order: 3;
+            @include flex(2);
+            @include order(3);
 
             form{
 
@@ -592,15 +660,15 @@ nav{
 
         .social{
             width: auto;
-            flex: 1 auto;
-            order: 2;
+            @include flex(1 auto);
+            @include order(2);
             margin-bottom: 30px;
         }
 
         .top-interior{
             width: auto;
-            flex: 1 auto;
-            order: 1;
+            @include flex(1 auto);
+            @include order(1);
             margin-bottom: 30px;
         }
     }

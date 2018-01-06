@@ -1,4 +1,5 @@
 window.onload = function () {
+
     const arrQuote = [
         quote1 = {
             author: "—John Wooden",
@@ -60,7 +61,7 @@ window.onload = function () {
         "url(media/slider4.jpg)",
         "url(media/slider5.jpg)"
     ];
-    var img1 = new Image(src = 'url(https://www.nysid.edu/image/home-slideshow/BFA15_Thomas.jpg)');
+    //var img1 = new Image(src = 'url(https://www.nysid.edu/image/home-slideshow/BFA15_Thomas.jpg)');
     const next = document.getElementById('next');
     const previous = document.getElementById('previous');
     const pause = document.getElementById('pause');
@@ -69,20 +70,21 @@ window.onload = function () {
     function nextPic() {
         if (current !== (images.length - 1)) {
             document.getElementById('slider').style.backgroundImage = images[++current];
-            //console.log(current);
         } else {
             current = 0;
             document.getElementById('slider').style.backgroundImage = images[current];
-            // console.log(current);
         }
     }
     ;
+
+
 
     var slideInterval = setInterval(nextPic, 4000);
 
     var go = true;
 
-    pause.onclick = function () {
+    pause.onclick = pausePic;
+    function pausePic() {
         if (go) {
             document.getElementById('pauseplay').src = 'media/play.png';
             go = false;
@@ -92,9 +94,12 @@ window.onload = function () {
             go = true;
             slideInterval = setInterval(nextPic, 4000);
         }
-    };
+    }
+    ;
 
-    previous.onclick = function () {
+    previous.onclick = previousPic;
+
+    function previousPic() {
         if (current !== 0) {
             document.getElementById('slider').style.backgroundImage = images[--current];
             console.log(current);
@@ -107,22 +112,34 @@ window.onload = function () {
     }
     ;
 
-};
+    document.onkeydown = function (evt) {
+        if (evt.keyCode === 37)
+            previousPic();
+        else if (evt.keyCode === 39)
+            nextPic();
+        else if (evt.keyCode === 32) {
+            evt.preventDefault();
+            pausePic();
+        }
+    };
+
 //load images
 
-document.getElementById('loadimages').onclick = function () {
-    document.getElementById('image1').classList.remove('hide');
-    document.getElementById('image2').classList.remove('hide');
-    document.getElementById('image3').classList.remove('hide');
-    document.getElementById('image4').classList.remove('hide');
-    document.getElementById('image5').classList.remove('hide');
-    document.getElementById('image6').classList.remove('hide');
-    this.parentElement.remove();
-};
+    document.getElementById('loadimages').onclick = function () {
+        document.getElementById('image1').classList.remove('hide');
+        document.getElementById('image2').classList.remove('hide');
+        document.getElementById('image3').classList.remove('hide');
+        document.getElementById('image4').classList.remove('hide');
+        document.getElementById('image5').classList.remove('hide');
+        document.getElementById('image6').classList.remove('hide');
+        this.parentElement.remove();
+    };
 //contact form
 
-const form = document.getElementById('myform'); //name, email, message, submit
+    const form = document.getElementById('myform'); //name, email, message, submit
 
-form.submit.onclick = function (e) {
-    e.preventDefault();
+    form.submit.onclick = function (e) {
+        e.preventDefault();
+    };
+
 };

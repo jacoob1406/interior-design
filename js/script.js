@@ -54,11 +54,11 @@ window.onload = function () {
     };
 //SLIDER
 
-    var images = ["url(https://www.nysid.edu/image/home-slideshow/BFA15_Thomas.jpg)",
-        "url(http://i.dailymail.co.uk/i/pix/2017/02/28/14/3DCCE5ED00000578-4267602-image-a-15_1488291042241.jpg)",
-        "url(https://static.chaosgroup.com/images/assets/000/001/119/articles_2_columns/bertrand-benoit-norsouth-living-interior-design-vray-3ds-max-thumb.jpg?1490189335)",
-        "url(http://devaug.com/i/2017/12/best-of-interior-design-degree-home-striking-photos-615x311.jpg)",
-        "url(https://scontent-waw1-1.xx.fbcdn.net/v/t1.0-9/19905151_1445223138904606_7067154252641042662_n.png?oh=48e379a2365342235d4225419922d5fb&oe=5AF26118)"
+    var images = ["url(media/slider1.jpg)",
+        "url(media/slider2.jpg)",
+        "url(media/slider3.jpg)",
+        "url(media/slider4.jpg)",
+        "url(media.slider5.jpg)"
     ];
     var img1 = new Image(src = 'url(https://www.nysid.edu/image/home-slideshow/BFA15_Thomas.jpg)');
     const next = document.getElementById('next');

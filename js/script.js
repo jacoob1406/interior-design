@@ -60,6 +60,7 @@ window.onload = function () {
         "url(http://devaug.com/i/2017/12/best-of-interior-design-degree-home-striking-photos-615x311.jpg)",
         "url(https://scontent-waw1-1.xx.fbcdn.net/v/t1.0-9/19905151_1445223138904606_7067154252641042662_n.png?oh=48e379a2365342235d4225419922d5fb&oe=5AF26118)"
     ];
+    var img1 = new Image(src = 'url(https://www.nysid.edu/image/home-slideshow/BFA15_Thomas.jpg)');
     const next = document.getElementById('next');
     const previous = document.getElementById('previous');
     const pause = document.getElementById('pause');

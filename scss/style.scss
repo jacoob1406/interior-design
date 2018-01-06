@@ -486,10 +486,11 @@ nav{
             &:hover{
                 opacity: 1;
                 cursor: pointer;
+                transform: rotateZ(360deg);
             }
         }
         .text{
-            color: red;
+            color: $col3;
             font-size: 20px;
             position: absolute;
             top: 50%;

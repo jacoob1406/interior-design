@@ -58,7 +58,7 @@ window.onload = function () {
         "url(media/slider2.jpg)",
         "url(media/slider3.jpg)",
         "url(media/slider4.jpg)",
-        "url(media.slider5.jpg)"
+        "url(media/slider5.jpg)"
     ];
     var img1 = new Image(src = 'url(https://www.nysid.edu/image/home-slideshow/BFA15_Thomas.jpg)');
     const next = document.getElementById('next');
